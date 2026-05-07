@@ -331,6 +331,18 @@
     color: var(--ink);
   }
 
+  a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(58, 107, 140, 0.3);
+    transition: border-color 0.2s;
+  }
+  a:hover { border-color: var(--blue); }
+  .food-card a { color: var(--red); border-bottom-color: rgba(196, 69, 60, 0.3); }
+  .food-card a:hover { border-color: var(--red); }
+  .transport a { color: var(--blue); }
+  .cover-hotel a { color: var(--ink-light); border-bottom-color: rgba(90, 74, 58, 0.3); }
+
   /* Section heading with underline doodle */
   .section-heading {
     font-family: 'Zen Kurenaido', serif;
@@ -515,7 +527,7 @@
     <div class="cover-subtitle">名古屋爆玩6日遊</div>
     <div class="cover-deco">✈️ 🏯 🍜 🎌 🗾</div>
     <div class="cover-hotel">
-      🏨 東橫INN 名古屋名站南<br>
+      🏨 <a href="https://www.toyoko-inn.com/china/search/detail/00028/" target="_blank">東橫INN 名古屋名站南</a><br>
       <small>愛知縣名古屋市中村區名站南2-3-30</small>
     </div>
   </div>
@@ -543,23 +555,23 @@
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-time">AM 04:10</div>
-        <div class="timeline-content">搭乘華航 CI154 紅眼班機飛往名古屋</div>
+        <div class="timeline-content">搭乘<a href="https://www.china-airlines.com/" target="_blank">華航 CI154</a> 紅眼班機飛往名古屋</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">上午</div>
-        <div class="timeline-content">抵達中部機場，KKDAY專車送至東橫INN寄放行李</div>
+        <div class="timeline-content">抵達<a href="https://www.centrair.jp/" target="_blank">中部機場</a>，KKDAY專車送至東橫INN寄放行李</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">PM 01:00</div>
-        <div class="timeline-content"><strong>HEBERS午餐</strong>（注意午間套餐下午3:00前供應，位於高島屋Gate Tower店4F）</div>
+        <div class="timeline-content"><strong><a href="https://www.harbs.co.jp/harbs/" target="_blank">HEBERS午餐</a></strong>（注意午間套餐下午3:00前供應，位於高島屋Gate Tower店4F）</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">下午</div>
-        <div class="timeline-content">前往<strong>大須觀音寺</strong>、<strong>三輪神社</strong>參拜購物</div>
+        <div class="timeline-content">前往<strong><a href="https://www.osu-kannon.jp/" target="_blank">大須觀音寺</a></strong>、<strong><a href="https://miwajinnjya.com/" target="_blank">三輪神社</a></strong>參拜購物</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">PM 08:00</div>
-        <div class="timeline-content"><strong>鳥貴族晚餐</strong>（日本居酒屋平價串燒）</div>
+        <div class="timeline-content"><strong><a href="https://torikizoku.co.jp/" target="_blank">鳥貴族</a>晚餐</strong>（日本居酒屋平價串燒）</div>
       </div>
     </div>
 
@@ -578,12 +590,12 @@
     </div>
 
     <div class="section-heading">🛍️ 購物狂歡</div>
-    <p style="font-size:0.92rem; line-height:1.7; margin-bottom:12px;">目標：<strong>三井OUTLET PARK</strong>（爵士之夢長島）</p>
+    <p style="font-size:0.92rem; line-height:1.7; margin-bottom:12px;">目標：<strong><a href="https://mitsui-shopping-park.com/mop/nagashima/" target="_blank">三井OUTLET PARK</a></strong>（爵士之夢長島）</p>
 
     <div class="transport">
       <h4>🚌 交通攻略</h4>
       <ul>
-        <li>前往「名鐵巴士中心4F」搭乘直達高速巴士</li>
+        <li>前往「<a href="https://www.meitetsu-bus.co.jp/rosen/meibc" target="_blank">名鐵巴士中心</a>4F」搭乘直達高速巴士</li>
         <li>車程約50分鐘，終點站「長島溫泉站」下車</li>
         <li>去程發車：08:30 / 08:45 / 09:00 / 09:15 / 09:45</li>
         <li>回程發車：16:00 / 16:15 / 16:30 / 17:30 / 18:10</li>
@@ -598,8 +610,8 @@
     <div class="food-card">
       <h4>🍱 網美必吃推薦</h4>
       <ul>
-        <li>館內中餐推薦<strong>鰻魚飯三吃</strong>（ひつまぶし）</li>
-        <li><strong>矢場丼</strong>（矢場とん 味噌豬排）</li>
+        <li>館內中餐推薦<strong><a href="https://www.inou-hitsumabushi.com/shop/jazzdream/" target="_blank">鰻魚飯三吃</a></strong>（ひつまぶし）</li>
+        <li><strong><a href="https://www.yabaton.com/" target="_blank">矢場丼</a></strong>（矢場とん 味噌豬排）</li>
       </ul>
     </div>
   </div>
@@ -622,31 +634,31 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-time">上午</div>
-        <div class="timeline-content">穿著和服參訪<strong>三光稻荷神社</strong>（洗錢求財、拍粉紅繪馬牆），登日本最古老木造天守<strong>「犬山城天守閣」</strong></div>
+        <div class="timeline-content">穿著和服參訪<strong><a href="https://inuyama.gr.jp/experience/detail/15/" target="_blank">三光稻荷神社</a></strong>（洗錢求財、拍粉紅繪馬牆），登日本最古老木造天守<strong>「<a href="https://inuyama-castle.jp/" target="_blank">犬山城天守閣</a>」</strong></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">中午/下午</div>
-        <div class="timeline-content">和服散策傳統町屋老街，邊走邊吃邊拍照</div>
+        <div class="timeline-content">和服散策<a href="https://inuyama.gr.jp/castle-town.html" target="_blank">傳統町屋老街</a>，邊走邊吃邊拍照</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">晚上</div>
-        <div class="timeline-content">返回市區後晚餐吃<strong>「獅子丸拉麵」</strong>（推薦泡系龍蝦湯拉麵）</div>
+        <div class="timeline-content">返回市區後晚餐吃<strong>「<a href="https://www.menya-hanzo.com/shishimaru.html" target="_blank">獅子丸拉麵</a>」</strong>（推薦泡系龍蝦湯拉麵）</div>
       </div>
     </div>
 
     <div class="transport">
       <h4>💡 交通與票券</h4>
       <ul>
-        <li>在名鐵名古屋站購買<strong>「犬山一日套票」</strong>，含來回車票、登城券和老街折扣券</li>
+        <li>在名鐵名古屋站購買<strong>「<a href="https://www.meitetsu.co.jp/plan/campaign/detail/1287808_8034.html" target="_blank">犬山一日套票</a>」</strong>，含來回車票、登城券和老街折扣券</li>
       </ul>
     </div>
 
     <div class="food-card">
       <h4>🍱 老街必吃IG打卡美食</h4>
       <ul>
-        <li><strong>蘭丸（強推）：</strong>現烤飛驒牛壽司，肉質鮮美入口即化</li>
-        <li><strong>芳川屋：</strong>超浮誇水果聖代</li>
-        <li><strong>本町茶寮：</strong>繽紛五彩糰子</li>
+        <li><strong><a href="https://tabelog.com/en/aichi/A2303/A230301/23083699/" target="_blank">蘭丸</a>（強推）：</strong>現烤飛驒牛壽司，肉質鮮美入口即化</li>
+        <li><strong><a href="https://tabelog.com/en/aichi/A2303/A230301/23038334/" target="_blank">芳川屋</a>：</strong>超浮誇水果聖代</li>
+        <li><strong><a href="https://inuyama.gr.jp/gourmet/detail/17/" target="_blank">本町茶寮</a>：</strong>繽紛五彩糰子</li>
       </ul>
     </div>
   </div>
@@ -659,7 +671,7 @@
       <div class="day-theme">吉卜力大倉庫宇宙大爆發</div>
     </div>
 
-    <div class="section-heading">🍃 吉卜力公園 ✨ 🐾 🚂</div>
+    <div class="section-heading">🍃 <a href="https://ghibli-park.jp/" target="_blank">吉卜力公園</a> ✨ 🐾 🚂</div>
     <p style="font-size:0.95rem; margin-bottom:16px; color:var(--ink-light);">走進動畫世界，尋找隱藏小細節</p>
 
     <div class="timeline">
@@ -673,7 +685,7 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-time">PM 12:00</div>
-        <div class="timeline-content">進入<strong>「吉卜力大倉庫」</strong>，必拍無臉男電車、機器人兵、湯婆婆辦公室，獵戶座影院看短片</div>
+        <div class="timeline-content">進入<strong>「<a href="https://ghibli-park.jp/park/" target="_blank">吉卜力大倉庫</a>」</strong>，必拍無臉男電車、機器人兵、湯婆婆辦公室，獵戶座影院看短片</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">PM 03:00</div>
@@ -688,7 +700,7 @@
     <div class="transport">
       <h4>🚌 交通攻略（直達巴士）</h4>
       <ul>
-        <li>去程：08:40發車 ➔ 09:20抵達青春之丘，接著轉搭09:40園區巴士</li>
+        <li>去程：08:40發車 ➔ 09:20抵達青春之丘，接著轉搭09:40園區巴士（<a href="https://www.meitetsu-bus.co.jp/express/aichikyuhaku" target="_blank">時刻表</a>）</li>
         <li>回程：16:20 ➔ 17:25 或 17:00 ➔ 17:40班次</li>
       </ul>
     </div>
@@ -712,22 +724,22 @@
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-time">上午</div>
-        <div class="timeline-content">參觀<strong>名古屋城</strong>（與天守閣上的金鯱合照），<strong>金鯱橫丁</strong>吃午餐</div>
+        <div class="timeline-content">參觀<strong><a href="https://www.nagoyajo.city.nagoya.jp/" target="_blank">名古屋城</a></strong>（與天守閣上的金鯱合照），<strong><a href="https://kinshachi-yokocho.com/" target="_blank">金鯱橫丁</a></strong>吃午餐</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">下午</div>
-        <div class="timeline-content"><strong>榮商圈</strong>逛街（Don Quijote、Parco、各大百貨），喝<strong>HARBS榮本店</strong>水果千層蛋糕</div>
+        <div class="timeline-content"><strong>榮商圈</strong>逛街（<a href="https://www.donki.com/store/shop_detail.php?shop_id=348" target="_blank">Don Quijote</a>、Parco、各大百貨），喝<strong><a href="https://www.harbs.co.jp/" target="_blank">HARBS榮本店</a></strong>水果千層蛋糕</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">晚上</div>
-        <div class="timeline-content"><strong>Oasis 21</strong>（綠之宇宙船）看夜景打卡，晚餐吃<strong>「世界的山將」</strong>（世界の山ちゃん）手羽先搭配啤酒</div>
+        <div class="timeline-content"><strong><a href="https://www.sakaepark.co.jp/" target="_blank">Oasis 21</a></strong>（綠之宇宙船）看夜景打卡，晚餐吃<strong>「<a href="https://www.yamachan.co.jp/" target="_blank">世界的山將</a>」</strong>（世界の山ちゃん）手羽先搭配啤酒</div>
       </div>
     </div>
 
     <div class="food-card">
       <h4>🍱 經典必吃</h4>
       <ul>
-        <li>名古屋城旁<strong>金鯱橫丁</strong>推薦矢場味噌豬排或山本屋總本家味噌烏龍麵</li>
+        <li>名古屋城旁<strong>金鯱橫丁</strong>推薦<a href="https://www.yabaton.com/" target="_blank">矢場味噌豬排</a>或<a href="https://yamamotoya.co.jp/" target="_blank">山本屋總本家</a>味噌烏龍麵</li>
         <li>榮商圈必試<strong>手羽先</strong>（炸雞翅），超級下酒</li>
       </ul>
     </div>
@@ -746,17 +758,17 @@
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-time">AM 07:20</div>
-        <div class="timeline-content">專車送機前往中部機場</div>
+        <div class="timeline-content">專車送機前往<a href="https://www.centrair.jp/" target="_blank">中部機場</a></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">上午</div>
-        <div class="timeline-content">機場最後補貨（蝦餅、伴手禮），搭乘華航CI15返家</div>
+        <div class="timeline-content">機場最後補貨（蝦餅、伴手禮），搭乘<a href="https://www.china-airlines.com/" target="_blank">華航CI15</a>返家</div>
       </div>
     </div>
 
     <div class="tip">
       <div class="tip-label">機場最後衝刺</div>
-      中部機場四樓商店街很好逛，特別推薦<strong>「えびせんべいの里」蝦餅</strong>，是名古屋必買伴手禮
+      <a href="https://www.centrair.jp/" target="_blank">中部機場</a>四樓商店街很好逛，特別推薦<strong>「<a href="https://www.ebisato.co.jp/" target="_blank">えびせんべいの里</a>」蝦餅</strong>，是名古屋必買伴手禮
     </div>
 
     <div class="doodle-divider">· · · ✈️ · · ·</div>
