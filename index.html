@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagoya Vibe! 名古屋爆玩6日遊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Klee+One:wght@400;600&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f0e8;
+    --paper-dark: #e8e0d0;
+    --ink: #2c2416;
+    --ink-light: #5a4a3a;
+    --red: #c4453c;
+    --blue: #3a6b8c;
+    --green: #5a7a52;
+    --orange: #d4854a;
+    --pink: #d4788a;
+    --purple: #7a5a8c;
+    --washi-1: #f0c4c4;
+    --washi-2: #c4dce8;
+    --washi-3: #d4e8c4;
+    --washi-4: #e8dcc4;
+    --washi-5: #d4c4e8;
+    --washi-6: #e8c4d4;
+    --stamp: #8b2500;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper-dark);
+    color: var(--ink);
+    font-family: 'Klee One', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Paper texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(0,0,0,0.02) 28px,
+        rgba(0,0,0,0.02) 29px
+      );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .journal {
+    max-width: 780px;
+    margin: 0 auto;
+    background: var(--paper);
+    min-height: 100vh;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15), -4px 0 20px rgba(0,0,0,0.15);
+    position: relative;
+    padding: 0 0 80px;
+  }
+
+  /* Spine stitch marks */
+  .journal::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--red) 0px,
+      var(--red) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    opacity: 0.3;
+  }
+
+  /* ---- COVER ---- */
+  .cover {
+    padding: 60px 60px 50px 70px;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px dashed rgba(0,0,0,0.1);
+  }
+
+  .cover-title {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1.1;
+    transform: rotate(-2deg);
+    margin-bottom: 4px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Zen Kurenaido', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: var(--ink);
+    font-weight: 400;
+    transform: rotate(-2deg);
+  }
+
+  .cover-deco {
+    margin-top: 28px;
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+  }
+
+  .cover-hotel {
+    margin-top: 24px;
+    background: var(--washi-4);
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    transform: rotate(1deg);
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .cover-hotel::before,
+  .cover-hotel::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 18px;
+    background: var(--washi-2);
+    opacity: 0.7;
+    top: -9px;
+  }
+  .cover-hotel::before { left: 10px; transform: rotate(-3deg); }
+  .cover-hotel::after { right: 10px; transform: rotate(2deg); }
+
+  /* Passport stamp */
+  .stamp {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 90px;
+    height: 90px;
+    border: 3px solid var(--stamp);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: rotate(15deg);
+    opacity: 0.5;
+    font-family: 'Caveat', cursive;
+    color: var(--stamp);
+  }
+  .stamp-text { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .stamp-date { font-size: 1rem; font-weight: 700; }
+  .stamp-city { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; }
+
+  /* ---- TABS ---- */
+  .tabs {
+    display: flex;
+    padding: 0 20px 0 50px;
+    gap: 4px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 2px solid rgba(0,0,0,0.06);
+  }
+
+  .tab {
+    font-family: 'Zen Kurenaido', serif;
+    font-size: 0.82rem;
+    padding: 10px 14px 8px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--ink-light);
+    position: relative;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    transition: background 0.2s;
+  }
+
+  .tab.active {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .tab[data-day="1"].active::after { background: var(--red); }
+  .tab[data-day="2"].active::after { background: var(--orange); }
+  .tab[data-day="3"].active::after { background: var(--pink); }
+  .tab[data-day="4"].active::after { background: var(--green); }
+  .tab[data-day="5"].active::after { background: var(--blue); }
+  .tab[data-day="6"].active::after { background: var(--purple); }
+
+  /* ---- DAY PAGES ---- */
+  .day-page {
+    display: none;
+    padding: 36px 44px 36px 70px;
+    animation: fadeIn 0.35s ease;
+  }
+  .day-page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Day header */
+  .day-header {
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .day-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .day-date {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 2px 0 4px;
+  }
+
+  .day-page[data-day="1"] .day-date { color: var(--red); }
+  .day-page[data-day="2"] .day-date { color: var(--orange); }
+  .day-page[data-day="3"] .day-date { color: var(--pink); }
+  .day-page[data-day="4"] .day-date { color: var(--green); }
+  .day-page[data-day="5"] .day-date { color: var(--blue); }
+  .day-page[data-day="6"] .day-date { color: var(--purple); }
+
+  .day-theme {
+    font-family: 'Zen Kurenaido', serif;
+    font-size: 1.1rem;
+    color: var(--ink-light);
+  }
+
+  /* Washi tape accent on header */
+  .day-header::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 6px;
+    width: 80px;
+    height: 20px;
+    opacity: 0.5;
+    transform: rotate(3deg);
+  }
+  .day-page[data-day="1"] .day-header::after { background: var(--washi-1); }
+  .day-page[data-day="2"] .day-header::after { background: var(--washi-4); }
+  .day-page[data-day="3"] .day-header::after { background: var(--washi-6); }
+  .day-page[data-day="4"] .day-header::after { background: var(--washi-3); }
+  .day-page[data-day="5"] .day-header::after { background: var(--washi-2); }
+  .day-page[data-day="6"] .day-header::after { background: var(--washi-5); }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 1.5px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--ink-light) 0px,
+      var(--ink-light) 4px,
+      transparent 4px,
+      transparent 10px
+    );
+    opacity: 0.3;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 22px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid var(--ink-light);
+    background: var(--paper);
+  }
+
+  .timeline-time {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    font-weight: 600;
+  }
+
+  .timeline-content {
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+
+  .timeline-content strong {
+    color: var(--ink);
+  }
+
+  /* Section heading with underline doodle */
+  .section-heading {
+    font-family: 'Zen Kurenaido', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    display: inline-block;
+    background-image: linear-gradient(120deg, currentColor 0%, currentColor 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: 0 100%;
+  }
+
+  /* Tip box — sticky note style */
+  .tip {
+    background: #fff9c4;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    transform: rotate(-0.5deg);
+    box-shadow: 2px 3px 8px rgba(0,0,0,0.08);
+    position: relative;
+    border: none;
+  }
+
+  .tip::before {
+    content: '💡';
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    font-size: 1.2rem;
+  }
+
+  .tip-label {
+    font-weight: 600;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  /* Food recommendation — polaroid style */
+  .food-card {
+    background: #fff;
+    padding: 18px 18px 14px;
+    margin: 18px 0;
+    box-shadow: 2px 3px 12px rgba(0,0,0,0.1);
+    transform: rotate(0.8deg);
+  }
+
+  .food-card h4 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+    color: var(--red);
+  }
+
+  .food-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .food-card li {
+    padding: 4px 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 22px;
+  }
+
+  .food-card li::before {
+    content: '🍴';
+    position: absolute;
+    left: 0;
+    font-size: 0.75rem;
+  }
+
+  /* Transport box */
+  .transport {
+    background: var(--washi-2);
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    border-left: 3px solid var(--blue);
+    transform: rotate(0.3deg);
+  }
+
+  .transport h4 {
+    font-family: 'Zen Kurenaido', serif;
+    font-size: 0.95rem;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .transport ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .transport li {
+    padding: 2px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .transport li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  /* Strategy box */
+  .strategy {
+    background: rgba(90, 122, 82, 0.08);
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    border-left: 3px solid var(--green);
+  }
+
+  .strategy h4 {
+    font-family: 'Zen Kurenaido', serif;
+    font-size: 0.95rem;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+
+  /* Doodle divider */
+  .doodle-divider {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 1rem;
+    opacity: 0.3;
+    letter-spacing: 0.5em;
+  }
+
+  /* Footer */
+  .journal-footer {
+    text-align: center;
+    padding: 40px 44px 0 70px;
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    opacity: 0.5;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+  }
+
+  /* Scroll to show all on mobile */
+  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  @media (max-width: 600px) {
+    .journal { box-shadow: none; }
+    .journal::before { left: 16px; }
+    .cover { padding: 40px 24px 36px 36px; }
+    .day-page { padding: 24px 20px 24px 36px; }
+    .tabs { padding: 0 8px 0 24px; }
+    .tab { font-size: 0.75rem; padding: 8px 10px 6px; }
+    .stamp { width: 60px; height: 60px; top: 16px; right: 16px; }
+    .stamp-text { font-size: 0.5rem; }
+    .stamp-date { font-size: 0.7rem; }
+    .stamp-city { font-size: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="journal">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="stamp">
+      <span class="stamp-text">Arrived</span>
+      <span class="stamp-date">5/8</span>
+      <span class="stamp-city">Nagoya, Japan</span>
+    </div>
+    <div class="cover-title">Nagoya Vibe!</div>
+    <div class="cover-subtitle">名古屋爆玩6日遊</div>
+    <div class="cover-deco">✈️ 🏯 🍜 🎌 🗾</div>
+    <div class="cover-hotel">
+      🏨 東橫INN 名古屋名站南<br>
+      <small>愛知縣名古屋市中村區名站南2-3-30</small>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" data-day="1" onclick="showDay(1)">Day 1 · 抵達</button>
+    <button class="tab" data-day="2" onclick="showDay(2)">Day 2 · 爆買</button>
+    <button class="tab" data-day="3" onclick="showDay(3)">Day 3 · 穿越</button>
+    <button class="tab" data-day="4" onclick="showDay(4)">Day 4 · 動畫</button>
+    <button class="tab" data-day="5" onclick="showDay(5)">Day 5 · 經典</button>
+    <button class="tab" data-day="6" onclick="showDay(6)">Day 6 · 賦歸</button>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-page active" data-day="1">
+    <div class="day-header">
+      <div class="day-label">Day 1</div>
+      <div class="day-date">5/8 — 抵達</div>
+      <div class="day-theme">日本落地！先吃雞翅再說</div>
+    </div>
+
+    <div class="section-heading">✈️ 啟程</div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">AM 04:10</div>
+        <div class="timeline-content">搭乘華航 CI154 紅眼班機飛往名古屋</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">上午</div>
+        <div class="timeline-content">抵達中部機場，KKDAY專車送至東橫INN寄放行李</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">PM 01:00</div>
+        <div class="timeline-content"><strong>HEBERS午餐</strong>（注意午間套餐下午3:00前供應，位於高島屋Gate Tower店4F）</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">下午</div>
+        <div class="timeline-content">前往<strong>大須觀音寺</strong>、<strong>三輪神社</strong>參拜購物</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">PM 08:00</div>
+        <div class="timeline-content"><strong>鳥貴族晚餐</strong>（日本居酒屋平價串燒）</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">小撇步</div>
+      飯店距名鐵名古屋站步行約12分鐘，第一晚可早點休息補眠或探路
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-page" data-day="2">
+    <div class="day-header">
+      <div class="day-label">Day 2</div>
+      <div class="day-date">5/9 — 爆買</div>
+      <div class="day-theme">Outlet爆買日！中餐吃爆鰻魚飯</div>
+    </div>
+
+    <div class="section-heading">🛍️ 購物狂歡</div>
+    <p style="font-size:0.92rem; line-height:1.7; margin-bottom:12px;">目標：<strong>三井OUTLET PARK</strong>（爵士之夢長島）</p>
+
+    <div class="transport">
+      <h4>🚌 交通攻略</h4>
+      <ul>
+        <li>前往「名鐵巴士中心4F」搭乘直達高速巴士</li>
+        <li>車程約50分鐘，終點站「長島溫泉站」下車</li>
+        <li>去程發車：08:30 / 08:45 / 09:00 / 09:15 / 09:45</li>
+        <li>回程發車：16:00 / 16:15 / 16:30 / 17:30 / 18:10</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <h4>🏷️ 血拼攻略</h4>
+      抵達後先至Information Center（綜合服務中心）領取優惠券
+    </div>
+
+    <div class="food-card">
+      <h4>🍱 網美必吃推薦</h4>
+      <ul>
+        <li>館內中餐推薦<strong>鰻魚飯三吃</strong>（ひつまぶし）</li>
+        <li><strong>矢場丼</strong>（矢場とん 味噌豬排）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-page" data-day="3">
+    <div class="day-header">
+      <div class="day-label">Day 3</div>
+      <div class="day-date">5/10 — 穿越</div>
+      <div class="day-theme">國寶城下町，穿越時空當網美</div>
+    </div>
+
+    <div class="section-heading">⛩️ 國寶犬山城 👘 🏯 🌸 🦊</div>
+    <p style="font-size:0.95rem; margin-bottom:16px; color:var(--ink-light);">和服體驗 + 犬山城下町漫步</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">AM 09:00</div>
+        <div class="timeline-content">前往犬山預約店家更換和服/浴衣</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">上午</div>
+        <div class="timeline-content">穿著和服參訪<strong>三光稻荷神社</strong>（洗錢求財、拍粉紅繪馬牆），登日本最古老木造天守<strong>「犬山城天守閣」</strong></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">中午/下午</div>
+        <div class="timeline-content">和服散策傳統町屋老街，邊走邊吃邊拍照</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">晚上</div>
+        <div class="timeline-content">返回市區後晚餐吃<strong>「獅子丸拉麵」</strong>（推薦泡系龍蝦湯拉麵）</div>
+      </div>
+    </div>
+
+    <div class="transport">
+      <h4>💡 交通與票券</h4>
+      <ul>
+        <li>在名鐵名古屋站購買<strong>「犬山一日套票」</strong>，含來回車票、登城券和老街折扣券</li>
+      </ul>
+    </div>
+
+    <div class="food-card">
+      <h4>🍱 老街必吃IG打卡美食</h4>
+      <ul>
+        <li><strong>蘭丸（強推）：</strong>現烤飛驒牛壽司，肉質鮮美入口即化</li>
+        <li><strong>芳川屋：</strong>超浮誇水果聖代</li>
+        <li><strong>本町茶寮：</strong>繽紛五彩糰子</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-page" data-day="4">
+    <div class="day-header">
+      <div class="day-label">Day 4</div>
+      <div class="day-date">5/11 — 動畫</div>
+      <div class="day-theme">吉卜力大倉庫宇宙大爆發</div>
+    </div>
+
+    <div class="section-heading">🍃 吉卜力公園 ✨ 🐾 🚂</div>
+    <p style="font-size:0.95rem; margin-bottom:16px; color:var(--ink-light);">走進動畫世界，尋找隱藏小細節</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">AM 08:40</div>
+        <div class="timeline-content">搭乘直達巴士出發（預計09:20抵達青春之丘）</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">AM 09:40</div>
+        <div class="timeline-content">轉搭園區免費巴士，外圍先拍照感受氛圍</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">PM 12:00</div>
+        <div class="timeline-content">進入<strong>「吉卜力大倉庫」</strong>，必拍無臉男電車、機器人兵、湯婆婆辦公室，獵戶座影院看短片</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">PM 03:00</div>
+        <div class="timeline-content">若有體力可追加<strong>魔法故鄉</strong>或<strong>魔女之谷</strong></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">傍晚</div>
+        <div class="timeline-content">紀念品店爆買後搭巴士返回市區</div>
+      </div>
+    </div>
+
+    <div class="transport">
+      <h4>🚌 交通攻略（直達巴士）</h4>
+      <ul>
+        <li>去程：08:40發車 ➔ 09:20抵達青春之丘，接著轉搭09:40園區巴士</li>
+        <li>回程：16:20 ➔ 17:25 或 17:00 ➔ 17:40班次</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <h4>🌟 遊玩攻略</h4>
+      倉庫內人很多，參考攻略圖路線，入內建議先排最熱門的「經典名場面（無臉男）」或咖啡廳，在公園內尋找遺落在椅子上的「吉卜力主角物品」
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-page" data-day="5">
+    <div class="day-header">
+      <div class="day-label">Day 5</div>
+      <div class="day-date">5/12 — 經典</div>
+      <div class="day-theme">與金鯱拍照，榮商圈夜景看宇宙船</div>
+    </div>
+
+    <div class="section-heading">🏯 名古屋城 & 榮商圈</div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">上午</div>
+        <div class="timeline-content">參觀<strong>名古屋城</strong>（與天守閣上的金鯱合照），<strong>金鯱橫丁</strong>吃午餐</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">下午</div>
+        <div class="timeline-content"><strong>榮商圈</strong>逛街（Don Quijote、Parco、各大百貨），喝<strong>HARBS榮本店</strong>水果千層蛋糕</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">晚上</div>
+        <div class="timeline-content"><strong>Oasis 21</strong>（綠之宇宙船）看夜景打卡，晚餐吃<strong>「世界的山將」</strong>（世界の山ちゃん）手羽先搭配啤酒</div>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <h4>🍱 經典必吃</h4>
+      <ul>
+        <li>名古屋城旁<strong>金鯱橫丁</strong>推薦矢場味噌豬排或山本屋總本家味噌烏龍麵</li>
+        <li>榮商圈必試<strong>手羽先</strong>（炸雞翅），超級下酒</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-page" data-day="6">
+    <div class="day-header">
+      <div class="day-label">Day 6</div>
+      <div class="day-date">5/13 — 賦歸</div>
+      <div class="day-theme">最後補貨，滿載而歸！下次見日本</div>
+    </div>
+
+    <div class="section-heading">🛫 賦歸</div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">AM 07:20</div>
+        <div class="timeline-content">專車送機前往中部機場</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">上午</div>
+        <div class="timeline-content">機場最後補貨（蝦餅、伴手禮），搭乘華航CI15返家</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">機場最後衝刺</div>
+      中部機場四樓商店街很好逛，特別推薦<strong>「えびせんべいの里」蝦餅</strong>，是名古屋必買伴手禮
+    </div>
+
+    <div class="doodle-divider">· · · ✈️ · · ·</div>
+
+    <p style="text-align:center; font-family:'Caveat',cursive; font-size:1.4rem; color:var(--ink-light); transform:rotate(-1deg);">
+      ありがとう名古屋！また来るよ 🇯🇵
+    </p>
+  </div>
+
+  <div class="journal-footer">
+    made with ♡ for our Nagoya trip
+  </div>
+</div>
+
+<script>
+function showDay(day) {
+  document.querySelectorAll('.day-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.day-page[data-day="${day}"]`).classList.add('active');
+  document.querySelector(`.tab[data-day="${day}"]`).classList.add('active');
+}
+</script>
+
+</body>
+</html>
